@@ -1,0 +1,11 @@
+[Unit]
+Description=PROMED Label printing Service
+After=multi-user.target
+[Service]
+WorkingDirectory=/opt/pro_label
+Type=idle
+ExecStart=/usr/bin/python3 /opt/pro_label/label.py
+Restart=always
+Environment=PYTHONUNBUFFERED=1
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+cp pro_label.service /etc/systemd/system/
+chown root:root /etc/systemd/system/pro_label.service
+chmod 644 /etc/systemd/system/pro_label.service
+
+mkdir -p /opt/pro_label
+cp label.py /opt/pro_label
+cp printcert.pem /opt/pro_label
+chown -R root:root /opt/pro_label
+chmod 644 /opt/pro_label/label.py
+
+systemctl daemon-reload
+systemctl enable --now pro_label.service
